@@ -7,15 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D63C21D11E715AAC004A2121 /* KGAPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D63C21D01E715AAC004A2121 /* KGAPNavigationController.m */; };
+		D65F99A11E6711F80071BDFD /* KGAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F99A01E6711F80071BDFD /* KGAudioPlayer.m */; };
+		D65F99A81E671E990071BDFD /* KGSong.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F99A71E671E990071BDFD /* KGSong.m */; };
+		D6D42A691E6EDD6700A26DB2 /* serebro-slomana.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D6D42A681E6EDD6700A26DB2 /* serebro-slomana.mp3 */; };
+		D6E820631E69F6C70095FCCC /* KGAPCurrentTimeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E820621E69F6C70095FCCC /* KGAPCurrentTimeSlider.m */; };
+		D6E820661E69F6DD0095FCCC /* KGAPVolumeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = D6E820651E69F6DD0095FCCC /* KGAPVolumeSlider.m */; };
 		D6F25D781E659CE500B6AD9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F25D771E659CE500B6AD9F /* main.m */; };
 		D6F25D7B1E659CE500B6AD9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F25D7A1E659CE500B6AD9F /* AppDelegate.m */; };
 		D6F25D7E1E659CE500B6AD9F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F25D7D1E659CE500B6AD9F /* ViewController.m */; };
 		D6F25D811E659CE500B6AD9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F25D7F1E659CE500B6AD9F /* Main.storyboard */; };
 		D6F25D831E659CE500B6AD9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6F25D821E659CE500B6AD9F /* Assets.xcassets */; };
 		D6F25D861E659CE500B6AD9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6F25D841E659CE500B6AD9F /* LaunchScreen.storyboard */; };
+		D6F25D8E1E65A7FC00B6AD9F /* out.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D6F25D8D1E65A7FC00B6AD9F /* out.mp3 */; };
+		D6F25D901E65AA7100B6AD9F /* background-music-aac.caf in Resources */ = {isa = PBXBuildFile; fileRef = D6F25D8F1E65AA7100B6AD9F /* background-music-aac.caf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D63C21CF1E715AAC004A2121 /* KGAPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGAPNavigationController.h; sourceTree = "<group>"; };
+		D63C21D01E715AAC004A2121 /* KGAPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGAPNavigationController.m; sourceTree = "<group>"; };
+		D65F999F1E6711F80071BDFD /* KGAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGAudioPlayer.h; sourceTree = "<group>"; };
+		D65F99A01E6711F80071BDFD /* KGAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGAudioPlayer.m; sourceTree = "<group>"; };
+		D65F99A61E671E990071BDFD /* KGSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGSong.h; sourceTree = "<group>"; };
+		D65F99A71E671E990071BDFD /* KGSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGSong.m; sourceTree = "<group>"; };
+		D65F99A91E671EC90071BDFD /* KGSongModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGSongModel.h; sourceTree = "<group>"; };
+		D6D42A681E6EDD6700A26DB2 /* serebro-slomana.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "serebro-slomana.mp3"; sourceTree = "<group>"; };
+		D6E820611E69F6C70095FCCC /* KGAPCurrentTimeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGAPCurrentTimeSlider.h; sourceTree = "<group>"; };
+		D6E820621E69F6C70095FCCC /* KGAPCurrentTimeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGAPCurrentTimeSlider.m; sourceTree = "<group>"; };
+		D6E820641E69F6DD0095FCCC /* KGAPVolumeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGAPVolumeSlider.h; sourceTree = "<group>"; };
+		D6E820651E69F6DD0095FCCC /* KGAPVolumeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGAPVolumeSlider.m; sourceTree = "<group>"; };
 		D6F25D731E659CE500B6AD9F /* masha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = masha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6F25D771E659CE500B6AD9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D6F25D791E659CE500B6AD9F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +46,8 @@
 		D6F25D821E659CE500B6AD9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6F25D851E659CE500B6AD9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6F25D871E659CE500B6AD9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6F25D8D1E65A7FC00B6AD9F /* out.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = out.mp3; sourceTree = "<group>"; };
+		D6F25D8F1E65AA7100B6AD9F /* background-music-aac.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "background-music-aac.caf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,9 +61,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D65F99A51E67151E0071BDFD /* KGAudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				D6E8205E1E69F6630095FCCC /* Views */,
+				D65F999F1E6711F80071BDFD /* KGAudioPlayer.h */,
+				D65F99A01E6711F80071BDFD /* KGAudioPlayer.m */,
+				D65F99A91E671EC90071BDFD /* KGSongModel.h */,
+			);
+			name = KGAudioPlayer;
+			sourceTree = "<group>";
+		};
+		D6E8205E1E69F6630095FCCC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D6E820601E69F67F0095FCCC /* ProgressSlider */,
+				D6E8205F1E69F6700095FCCC /* VolumeSlider */,
+				D63C21CF1E715AAC004A2121 /* KGAPNavigationController.h */,
+				D63C21D01E715AAC004A2121 /* KGAPNavigationController.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D6E8205F1E69F6700095FCCC /* VolumeSlider */ = {
+			isa = PBXGroup;
+			children = (
+				D6E820641E69F6DD0095FCCC /* KGAPVolumeSlider.h */,
+				D6E820651E69F6DD0095FCCC /* KGAPVolumeSlider.m */,
+			);
+			name = VolumeSlider;
+			sourceTree = "<group>";
+		};
+		D6E820601E69F67F0095FCCC /* ProgressSlider */ = {
+			isa = PBXGroup;
+			children = (
+				D6E820611E69F6C70095FCCC /* KGAPCurrentTimeSlider.h */,
+				D6E820621E69F6C70095FCCC /* KGAPCurrentTimeSlider.m */,
+			);
+			name = ProgressSlider;
+			sourceTree = "<group>";
+		};
 		D6F25D6A1E659CE500B6AD9F = {
 			isa = PBXGroup;
 			children = (
+				D65F99A51E67151E0071BDFD /* KGAudioPlayer */,
 				D6F25D751E659CE500B6AD9F /* masha */,
 				D6F25D741E659CE500B6AD9F /* Products */,
 			);
@@ -58,6 +121,9 @@
 		D6F25D751E659CE500B6AD9F /* masha */ = {
 			isa = PBXGroup;
 			children = (
+				D6D42A681E6EDD6700A26DB2 /* serebro-slomana.mp3 */,
+				D6F25D8D1E65A7FC00B6AD9F /* out.mp3 */,
+				D6F25D8F1E65AA7100B6AD9F /* background-music-aac.caf */,
 				D6F25D791E659CE500B6AD9F /* AppDelegate.h */,
 				D6F25D7A1E659CE500B6AD9F /* AppDelegate.m */,
 				D6F25D7C1E659CE500B6AD9F /* ViewController.h */,
@@ -67,6 +133,8 @@
 				D6F25D841E659CE500B6AD9F /* LaunchScreen.storyboard */,
 				D6F25D871E659CE500B6AD9F /* Info.plist */,
 				D6F25D761E659CE500B6AD9F /* Supporting Files */,
+				D65F99A61E671E990071BDFD /* KGSong.h */,
+				D65F99A71E671E990071BDFD /* KGSong.m */,
 			);
 			path = masha;
 			sourceTree = "<group>";
@@ -110,7 +178,13 @@
 				TargetAttributes = {
 					D6F25D721E659CE500B6AD9F = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 2379KEYGW3;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -137,9 +211,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6F25D901E65AA7100B6AD9F /* background-music-aac.caf in Resources */,
 				D6F25D861E659CE500B6AD9F /* LaunchScreen.storyboard in Resources */,
+				D6F25D8E1E65A7FC00B6AD9F /* out.mp3 in Resources */,
 				D6F25D831E659CE500B6AD9F /* Assets.xcassets in Resources */,
 				D6F25D811E659CE500B6AD9F /* Main.storyboard in Resources */,
+				D6D42A691E6EDD6700A26DB2 /* serebro-slomana.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,9 +227,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D65F99A81E671E990071BDFD /* KGSong.m in Sources */,
 				D6F25D7E1E659CE500B6AD9F /* ViewController.m in Sources */,
+				D6E820631E69F6C70095FCCC /* KGAPCurrentTimeSlider.m in Sources */,
 				D6F25D7B1E659CE500B6AD9F /* AppDelegate.m in Sources */,
+				D63C21D11E715AAC004A2121 /* KGAPNavigationController.m in Sources */,
 				D6F25D781E659CE500B6AD9F /* main.m in Sources */,
+				D6E820661E69F6DD0095FCCC /* KGAPVolumeSlider.m in Sources */,
+				D65F99A11E6711F80071BDFD /* KGAudioPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,10 +354,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2379KEYGW3;
 				INFOPLIST_FILE = masha/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.asmomedia.masha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carpazzzi.talkzzz.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "442502ad-1a02-4819-8d65-d590de65b2f5";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.carpazzzi.talkzzz.staging";
 			};
 			name = Debug;
 		};
@@ -283,9 +368,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = masha/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.asmomedia.masha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carpazzzi.talkzzz.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -309,6 +395,7 @@
 				D6F25D8C1E659CE500B6AD9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
