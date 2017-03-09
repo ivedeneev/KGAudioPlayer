@@ -236,6 +236,7 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
     _volumeSlider.minimumValueImage = [UIImage imageNamed:@"VolumeControlVolumeIcon"];
     _volumeSlider.maximumValueImage = [UIImage imageNamed:@"VolumeControlVolumeUpIcon"];
     [_volumeSlider setThumbImage:[UIImage imageNamed:@"VolumeControlSliderButton"] forState:UIControlStateNormal];
+    _volumeSlider.tintColor = [UIColor grayColor];
     
     [_volumeSlider addTarget:self
                       action:@selector(ap_volumeSliderValueChanged)
@@ -246,6 +247,7 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 
 - (void)ap_setupProgressSlider {
     _progressSlider = [[KGAPCurrentTimeSlider alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(_coverImageView.frame) + 8, SCREEN_WIDTH * 0.65, 30)];
+//    [_progressSlider setThumbImage:[UIImage imageNamed:@"VideoSliderHandle"] forState:UIControlStateNormal];
     
     _progressSlider.center = CGPointMake(self.view.center.x, _progressSlider.center.y);
     

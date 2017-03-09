@@ -12,5 +12,6 @@
 - (NSURL *)songURL;
 - (NSString *)songTitle;
 - (NSString *)author;
+- (NSString *)lyrics;
 - (int)lengthInSeconds;
 @end

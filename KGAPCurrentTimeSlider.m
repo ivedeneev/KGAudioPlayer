@@ -24,6 +24,10 @@
 //    
 //}
 
+- (CGRect)trackRectForBounds:(CGRect)bounds {
+    return CGRectMake(0, bounds.size.height / 2 - 2, bounds.size.width, 4);
+}
+
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [super touchesCancelled:touches withEvent:event];
     
