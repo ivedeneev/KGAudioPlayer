@@ -30,7 +30,7 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) AVPlayerItem *currentPlayerItem;
 @property (nonatomic, strong) AVAudioSession *audioSession;
-@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) id periodicTimeObserver;
 
 @property (nonatomic, strong) UIImageView *coverImageView;
 
@@ -349,16 +349,15 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 }
 
 - (void)ap_startTimer {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                  target:self
-                                                selector:@selector(ap_updatePlayingProgress:)
-                                                userInfo:nil
-                                                 repeats:YES];
-
+    CMTime time = CMTimeMakeWithSeconds(0.1, [self.currentSong lengthInSeconds]);
+    __weak typeof(self) wSelf = self;
+    self.periodicTimeObserver = [self.player addPeriodicTimeObserverForInterval:time queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        [wSelf ap_updatePlayingProgress];
+    }];
 }
 
 - (void)ap_invalidateTimer {
-    [self.timer invalidate];
+//    [self.timer invalidate];
 }
 
 - (void)ap_volumeSliderValueChanged {
@@ -378,7 +377,7 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
     [[self.player currentItem] setAudioMix:audioZeroMix];
 }
 
-- (void)ap_updatePlayingProgress:(id)sender {
+- (void)ap_updatePlayingProgress {
     if (self.userIsScrubbing || !self.player) {
         NSLog(@"SKIP UPDATING");
         return;
@@ -404,7 +403,7 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
     CMTime time = CMTimeMakeWithSeconds(self.progressSlider.value, 1);
 
     [self.player seekToTime:time toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
-    [self ap_updatePlayingProgress:self.progressSlider];
+    [self ap_updatePlayingProgress];
     
     self.userIsScrubbing = NO;
     
@@ -464,6 +463,7 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 - (void)ap_dismissAction {
     [self.player pause];
     //refactor
+    [self.player removeTimeObserver:self.periodicTimeObserver];
     self.player = nil;
     self.currentPlayerItem = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
