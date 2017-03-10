@@ -118,6 +118,9 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
     [self ap_setupTimeElapsedLabel];
     [self ap_setupDurationLabel];
     [self ap_setupBottomToolbar];
+    
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
 }
 
 - (void)ap_handleStall {
@@ -329,6 +332,21 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 
 #pragma mark - Private
 
+- (void)ap_updateMediaInfoCenter {
+    id<KGSongModel> song = self.currentSong;
+    NSDictionary *info = @{ MPMediaItemPropertyPlaybackDuration         : @([song lengthInSeconds]),
+                            MPMediaItemPropertyTitle                    : [song songTitle],
+                            MPNowPlayingInfoPropertyElapsedPlaybackTime : @((int)((self.player.currentTime.value)/self.player.currentTime.timescale)),
+                            MPNowPlayingInfoPropertyPlaybackQueueCount  : @(self.songs.count),
+                            MPNowPlayingInfoPropertyPlaybackQueueIndex  : @(self.selectedSongIndex + 1),
+                            MPMediaItemPropertyMediaType                : @(MPMediaTypeAnyAudio),
+                            MPMediaItemPropertyArtist                   : [song author],
+                            MPMediaItemPropertyAlbumTitle               : @"TEst album title"
+                            };
+    
+    [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = info;
+}
+
 - (void)ap_play {
     self.isPlaying = !self.isPlaying;
     
@@ -344,8 +362,9 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
         [self ap_startTimer];
     } else {
         [self.player pause];
-        [self ap_invalidateTimer];
     }
+    
+    [self ap_updateMediaInfoCenter];
 }
 
 - (void)ap_startTimer {
@@ -353,11 +372,8 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
     __weak typeof(self) wSelf = self;
     self.periodicTimeObserver = [self.player addPeriodicTimeObserverForInterval:time queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         [wSelf ap_updatePlayingProgress];
+        [wSelf ap_updateMediaInfoCenter];
     }];
-}
-
-- (void)ap_invalidateTimer {
-//    [self.timer invalidate];
 }
 
 - (void)ap_volumeSliderValueChanged {
@@ -379,14 +395,11 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 
 - (void)ap_updatePlayingProgress {
     if (self.userIsScrubbing || !self.player) {
-        NSLog(@"SKIP UPDATING");
         return;
     }
 
     int currentPoint = (int)((self.player.currentTime.value)/self.player.currentTime.timescale);
-    
     self.progressSlider.value = currentPoint;
-    
     [self ap_updateTimeElapsedLabel:currentPoint];
 }
 
@@ -399,7 +412,6 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 }
 
 - (void)ap_progressSliderDidEngScrubbing {
-//    int32_t timeScale = self.player.currentItem.asset.duration.timescale;
     CMTime time = CMTimeMakeWithSeconds(self.progressSlider.value, 1);
 
     [self.player seekToTime:time toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
@@ -439,6 +451,12 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
     [self ap_updateTimeElapsedLabel:0];
     self.isPlaying = NO;
 }
+
+- (void)ap_configureTitleWithCurrentSongIndex {
+    NSString *navTitleString = [NSString stringWithFormat:@"%d из %ld", self.selectedSongIndex + 1, (unsigned long)self.songs.count];
+    self.title = navTitleString;
+}
+
 
 #pragma mark - Actions
 
@@ -480,16 +498,6 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 }
 
 
-#pragma mark - Helpers
-
-
-
-- (void)ap_configureTitleWithCurrentSongIndex {
-    NSString *navTitleString = [NSString stringWithFormat:@"%d из %ld", self.selectedSongIndex + 1, (unsigned long)self.songs.count];
-    self.title = navTitleString;
-}
-
-
 #pragma mark - Public
 
 - (void)presentFrom:(UIViewController *)fromViewController {
@@ -499,6 +507,42 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
     self.navigationItem.leftBarButtonItem = doneButton;
     
     [fromViewController presentViewController:nc animated:YES completion:nil];
+}
+
+
+#pragma mark - Remote Controls
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    if (event.type == UIEventTypeRemoteControl) {
+        
+        switch (event.subtype) {
+                
+            case UIEventSubtypeRemoteControlPause:
+            case UIEventSubtypeRemoteControlPlay:
+            case UIEventSubtypeRemoteControlTogglePlayPause:
+                [self ap_play];
+                break;
+                
+                
+                case UIEventSubtypeRemoteControlNextTrack:
+                [self ap_forwardAction];
+                break;
+                
+            case UIEventSubtypeRemoteControlPreviousTrack:
+                [self ap_backAction];
+                break;
+                
+            case UIEventSubtypeRemoteControlBeginSeekingForward://[self skipButtonPressed:nil];
+                NSLog(@"Skip remote pressed");
+                break;
+                
+            default: break;
+        }
+    }
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
 }
 
 @end
