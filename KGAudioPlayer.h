@@ -31,6 +31,6 @@
  -- set new song @ delegate methods
  */
 @property (nonatomic, strong) id<KGSongModel> currentSong;
-@property (nonatomic, assign) NSInteger selectedSongIndex;
+@property (nonatomic, assign) int selectedSongIndex;
 
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D63C21D11E715AAC004A2121 /* KGAPNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D63C21D01E715AAC004A2121 /* KGAPNavigationController.m */; };
+		D63C21D91E72A708004A2121 /* KGAPLyricsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D63C21D81E72A708004A2121 /* KGAPLyricsViewController.m */; };
 		D65F99A11E6711F80071BDFD /* KGAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F99A01E6711F80071BDFD /* KGAudioPlayer.m */; };
 		D65F99A81E671E990071BDFD /* KGSong.m in Sources */ = {isa = PBXBuildFile; fileRef = D65F99A71E671E990071BDFD /* KGSong.m */; };
 		D6D42A691E6EDD6700A26DB2 /* serebro-slomana.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D6D42A681E6EDD6700A26DB2 /* serebro-slomana.mp3 */; };
@@ -26,6 +27,8 @@
 /* Begin PBXFileReference section */
 		D63C21CF1E715AAC004A2121 /* KGAPNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGAPNavigationController.h; sourceTree = "<group>"; };
 		D63C21D01E715AAC004A2121 /* KGAPNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGAPNavigationController.m; sourceTree = "<group>"; };
+		D63C21D71E72A708004A2121 /* KGAPLyricsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGAPLyricsViewController.h; sourceTree = "<group>"; };
+		D63C21D81E72A708004A2121 /* KGAPLyricsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGAPLyricsViewController.m; sourceTree = "<group>"; };
 		D65F999F1E6711F80071BDFD /* KGAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGAudioPlayer.h; sourceTree = "<group>"; };
 		D65F99A01E6711F80071BDFD /* KGAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGAudioPlayer.m; sourceTree = "<group>"; };
 		D65F99A61E671E990071BDFD /* KGSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGSong.h; sourceTree = "<group>"; };
@@ -61,9 +64,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D63C21D41E72A6BF004A2121 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D63C21D51E72A6C6004A2121 /* Lyrics */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D63C21D51E72A6C6004A2121 /* Lyrics */ = {
+			isa = PBXGroup;
+			children = (
+				D63C21D71E72A708004A2121 /* KGAPLyricsViewController.h */,
+				D63C21D81E72A708004A2121 /* KGAPLyricsViewController.m */,
+			);
+			name = Lyrics;
+			sourceTree = "<group>";
+		};
 		D65F99A51E67151E0071BDFD /* KGAudioPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				D63C21D41E72A6BF004A2121 /* Controllers */,
 				D6E8205E1E69F6630095FCCC /* Views */,
 				D65F999F1E6711F80071BDFD /* KGAudioPlayer.h */,
 				D65F99A01E6711F80071BDFD /* KGAudioPlayer.m */,
@@ -178,7 +199,7 @@
 				TargetAttributes = {
 					D6F25D721E659CE500B6AD9F = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 2379KEYGW3;
+						DevelopmentTeam = X4SVWSJYVW;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -235,6 +256,7 @@
 				D6F25D781E659CE500B6AD9F /* main.m in Sources */,
 				D6E820661E69F6DD0095FCCC /* KGAPVolumeSlider.m in Sources */,
 				D65F99A11E6711F80071BDFD /* KGAudioPlayer.m in Sources */,
+				D63C21D91E72A708004A2121 /* KGAPLyricsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,13 +376,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 2379KEYGW3;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = X4SVWSJYVW;
 				INFOPLIST_FILE = masha/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carpazzzi.talkzzz.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kilograpp.tripsformer.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "442502ad-1a02-4819-8d65-d590de65b2f5";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.carpazzzi.talkzzz.staging";
+				PROVISIONING_PROFILE = "1aa55b82-ba54-4b44-a8be-c194bdc0184d";
+				PROVISIONING_PROFILE_SPECIFIER = Development;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -370,9 +395,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = masha/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.carpazzzi.talkzzz.staging;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kilograpp.tripsformer.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

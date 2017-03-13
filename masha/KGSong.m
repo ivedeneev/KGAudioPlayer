@@ -32,4 +32,8 @@
     return self.length;
 }
 
+- (NSString *)lyrics {
+    return @"I`ve seen the worldDone it all, had my cake nowDiamonds, brilliant, and Bel-Air now Hot summer nights mid July When you and I were forever wildThe crazy days, the city lights The way youd play with me like a child";
+}
+
 @end

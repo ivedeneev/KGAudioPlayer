@@ -9,6 +9,7 @@
 #import "KGAudioPlayer.h"
 #import "KGAPCurrentTimeSlider.h"
 #import "KGAPNavigationController.h"
+#import "KGAPLyricsViewController.h"
 @import AVFoundation;
 @import AudioToolbox;
 @import AVKit;
@@ -100,9 +101,15 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
                            options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
                            context:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ap_handleStall) name:AVPlayerItemPlaybackStalledNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ap_handleStall)
+                                                 name:AVPlayerItemPlaybackStalledNotification
+                                               object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ap_handleStall) name:AVAudioSessionInterruptionNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(ap_handleInterruption)
+                                                 name:AVAudioSessionInterruptionNotification
+                                               object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(ap_currentSongDidFinishPlaying)
@@ -125,11 +132,12 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 
 - (void)ap_handleStall {
     [self.player pause];
-    NSLog(@"YO");
+    NSLog(@"Stall");
 }
 
 - (void)ap_handleInterruption {
-    NSLog(@"T_T");
+    [self.player pause];
+    NSLog(@"Interruption");
 }
 
 #pragma mark - Dealloc
@@ -166,7 +174,7 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 - (void)ap_setupBottomToolbar {
     _bottomToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 44, SCREEN_WIDTH, 44)];
     
-    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ModernNavigationAddButtonIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(test)];
+    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ModernNavigationAddButtonIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(ap_presentLyricsAction)];
     UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ModernNavigationAddButtonIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(test)];
     UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ModernNavigationAddButtonIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(test)];
     UIBarButtonItem *item4 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ModernNavigationAddButtonIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(test)];
@@ -250,8 +258,6 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 
 - (void)ap_setupProgressSlider {
     _progressSlider = [[KGAPCurrentTimeSlider alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(_coverImageView.frame) + 8, SCREEN_WIDTH * 0.65, 30)];
-//    [_progressSlider setThumbImage:[UIImage imageNamed:@"VideoSliderHandle"] forState:UIControlStateNormal];
-    
     _progressSlider.center = CGPointMake(self.view.center.x, _progressSlider.center.y);
     
     [_progressSlider addTarget:self
@@ -404,7 +410,6 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
 }
 
 - (void)ap_UserDidCHangeProgressValue:(id)sender {
-    NSLog(@"%lld", self.player.currentItem.currentTime.value);
     int currentPoint = ceilf(self.progressSlider.value);
     [self ap_updateTimeElapsedLabel:currentPoint];
     [self.player pause];
@@ -487,6 +492,13 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)ap_presentLyricsAction {
+    KGAPLyricsViewController *vc = [[KGAPLyricsViewController alloc] initWithSong:self.currentSong];
+    KGAPNavigationController *nc = [[KGAPNavigationController alloc] initWithRootViewController:vc];
+    
+    [self presentViewController:nc animated:YES completion:nil];
+}
+
 
 #pragma mark - Observing
 
@@ -516,7 +528,6 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
     if (event.type == UIEventTypeRemoteControl) {
         
         switch (event.subtype) {
-                
             case UIEventSubtypeRemoteControlPause:
             case UIEventSubtypeRemoteControlPlay:
             case UIEventSubtypeRemoteControlTogglePlayPause:
@@ -532,7 +543,7 @@ static NSString *const kForvardImageName = @"MusicPlayerControlForward";
                 [self ap_backAction];
                 break;
                 
-            case UIEventSubtypeRemoteControlBeginSeekingForward://[self skipButtonPressed:nil];
+            case UIEventSubtypeRemoteControlBeginSeekingForward:
                 NSLog(@"Skip remote pressed");
                 break;
                 
